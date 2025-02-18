@@ -7,14 +7,17 @@
 <?php $this->extend('/layout/TwitterBootstrap/dashboard'); ?>
 
 <?php $this->start('tb_actions'); ?>
+<li><?= $this->Html->link(__('List Products'), ['action' => 'index'], ['class' => 'nav-link']) ?></li>
 <li><?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'nav-link']) ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav flex-column">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <?php
-    echo $this->Form->create();
+    echo $this->Form->create(null, ['method' => 'get']);
     // Hard code the user for now.
-    echo $this->Form->control('search');
+    echo $this->Form->control('search', ['value' => $searchName]);
+    echo $this->Form->control('sort', ['type' => 'hidden', 'value' => $sort]);
+    echo $this->Form->control('direction', ['type' => 'hidden', 'value' => $direction]);
     echo $this->Form->button('search by name');
     echo $this->Form->end();
 ?>

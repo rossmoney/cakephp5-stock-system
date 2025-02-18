@@ -27,11 +27,6 @@ $this->start('tb_body_start');
         >
             <span class="navbar-toggler-icon"></span>
         </button>
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
-            </li>
-        </ul>
     </header>
 
     <div class="container-fluid">
@@ -43,10 +38,12 @@ $this->start('tb_body_start');
             </nav>
 
             <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <?php if ($this->request->getRequestTarget() != '/') : ?>
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center
                             pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2 page-header"><?= h($this->request->getParam('controller')) ?></h1>
                 </div>
+                <?php endif; ?>
 <?php
 /**
  * Default `flash` block.

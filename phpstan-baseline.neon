@@ -1,0 +1,175 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\Model\\Behavior\\LastUpdatedBehavior\:\:beforeSave\(\) has parameter \$event with generic interface Cake\\Event\\EventInterface but does not specify its types\: TSubject$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Model/Behavior/LastUpdatedBehavior.php
+
+		-
+			message: '#^Method App\\Model\\Behavior\\LastUpdatedBehavior\:\:beforeSave\(\) has parameter \$options with generic class ArrayObject but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Model/Behavior/LastUpdatedBehavior.php
+
+		-
+			message: '#^Access to an undefined property Cake\\Datasource\\EntityInterface\:\:\$quantity\.$#'
+			identifier: property.notFound
+			count: 3
+			path: src/Model/Behavior/ProductStatusBehavior.php
+
+		-
+			message: '#^Method App\\Model\\Behavior\\ProductStatusBehavior\:\:beforeSave\(\) has parameter \$event with generic interface Cake\\Event\\EventInterface but does not specify its types\: TSubject$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Model/Behavior/ProductStatusBehavior.php
+
+		-
+			message: '#^Method App\\Model\\Behavior\\ProductStatusBehavior\:\:beforeSave\(\) has parameter \$options with generic class ArrayObject but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Model/Behavior/ProductStatusBehavior.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method deleteMany\(\) parameter \#1 \$entities with no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method deleteMany\(\) parameter \#2 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method deleteManyOrFail\(\) parameter \#1 \$entities with no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method deleteManyOrFail\(\) parameter \#2 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method findOrCreate\(\) parameter \#3 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method get\(\) parameter \#2 \$finder with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method newEntities\(\) parameter \#1 \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method newEntities\(\) parameter \#2 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method newEntity\(\) parameter \#1 \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method newEntity\(\) parameter \#2 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method patchEntities\(\) parameter \#1 \$entities with no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method patchEntities\(\) parameter \#2 \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method patchEntities\(\) parameter \#3 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method patchEntity\(\) parameter \#2 \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method patchEntity\(\) parameter \#3 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method save\(\) parameter \#2 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method saveMany\(\) parameter \#1 \$entities with no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method saveMany\(\) parameter \#2 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method saveManyOrFail\(\) parameter \#1 \$entities with no value type specified in iterable type iterable\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method saveManyOrFail\(\) parameter \#2 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Class App\\Model\\Table\\ProductsTable has PHPDoc tag @method for method saveOrFail\(\) parameter \#2 \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/Table/ProductsTable.php
+
+		-
+			message: '#^Property App\\Test\\TestCase\\Controller\\ProductsControllerTest\:\:\$Products \(App\\Model\\Table\\ProductsTable\) does not accept Cake\\ORM\\Table\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/TestCase/Controller/ProductsControllerTest.php
+
+		-
+			message: '#^Property App\\Test\\TestCase\\Model\\Table\\ProductsTableTest\:\:\$Products \(App\\Model\\Table\\ProductsTable\) does not accept Cake\\ORM\\Table\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/TestCase/Model/Table/ProductsTableTest.php
+
+		-
+			message: '#^Constant TMP not found\.$#'
+			identifier: constant.notFound
+			count: 1
+			path: tests/bootstrap.php

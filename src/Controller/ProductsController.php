@@ -13,7 +13,7 @@ class ProductsController extends AppController
     /**
      * Pagination settings for the ProductsController.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     public array $paginate = [
         'limit' => 5,
@@ -26,14 +26,18 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $query = $this->Products->find()->where(['deleted' => 0]);
-        $queryString = $this->request->getData('search');
-        if (!empty($queryString)) {
-            $query->where(['name LIKE' => '%' . $queryString . '%']);
-        }
-        $products = $this->paginate($query);
+        $searchName = $this->request->getQuery('search');
+        $sort = $this->request->getQuery('sort');
+        $direction = $this->request->getQuery('direction');
 
-        $this->set(compact('products'));
+        $query = $this->Products->find();
+        $conditions = [];
+        if (!empty($searchName)) {
+            $conditions['name like'] = trim('%' . $searchName . '%', ' ');
+        }
+        $products = $this->paginate($query->where(['deleted' => 0])->where($conditions));
+
+        $this->set(compact('products', 'searchName', 'sort', 'direction'));
     }
 
     /**
@@ -47,11 +51,11 @@ class ProductsController extends AppController
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved.'));
+                $this->Flash->success('The product has been saved.');
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            $this->Flash->error('The product could not be saved. Please, try again.');
         }
         $this->set(compact('product'));
     }
@@ -69,11 +73,11 @@ class ProductsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved.'));
+                $this->Flash->success('The product has been saved.');
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            $this->Flash->error('The product could not be saved. Please, try again.');
         }
         $this->set(compact('product'));
     }
@@ -92,7 +96,7 @@ class ProductsController extends AppController
 
         $product->set('deleted', true);
         $this->Products->save($product);
-        $this->Flash->success(__('The product has been deleted.'));
+        $this->Flash->success('The product has been deleted.');
 
         return $this->redirect(['action' => 'index']);
     }

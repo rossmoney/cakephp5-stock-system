@@ -5,6 +5,7 @@
  * Note: It is not recommended to commit files with credentials such as app_local.php
  * into source code version control.
  */
+
 return [
     /*
      * Debug Level:
@@ -44,10 +45,10 @@ return [
              */
             //'port' => 'non_standard_port_number',
 
-            'username' => 'my_app',
+            'username' => 'cakephp5-stock-system',
             'password' => 'secret',
 
-            'database' => 'my_app',
+            'database' => 'cakephp5-stock-system',
             /*
              * If not using the default 'public' schema with the PostgreSQL driver
              * set it here.
@@ -64,11 +65,13 @@ return [
          * The test connection is used during the test suite.
          */
         'test' => [
+            'datasource' => 'Cake\Database\Driver\Mysql',
             'host' => 'localhost',
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
+            'persistent' => false,
+            'username' => 'cakephp5-stock-system',
             'password' => 'secret',
-            'database' => 'test_myapp',
+            'database' => 'cakephp5-stock-system',
             //'schema' => 'myapp',
             'url' => env('DATABASE_TEST_URL', 'sqlite://127.0.0.1/tmp/tests.sqlite'),
         ],

@@ -56,7 +56,7 @@ class ProductsControllerTest extends TestCase
 
         $this->assertResponseOk();
         $this->assertResponseContains('Products'); // Check if the response contains 'Products'
-        $this->assertResponseContains('Best product Evar!'); // Check if the response contains a product name
+        $this->assertResponseContains('A product'); // Check if the response contains a product name
 
         $products = $this->viewVariable('products');
         $this->assertNotEmpty($products); // Check if products variable is set
@@ -79,14 +79,13 @@ class ProductsControllerTest extends TestCase
         $this->post('/products/add', $data);
 
         //assert the record was changed
-        $result = $this->Products->get(1);
+        $result = $this->Products->get(2);
+
         $this->assertEquals('Best product Evar!', $result->name);
         $this->assertEquals('1.99', $result->price);
 
         //assert that some sort of session flash was set.
-        //$this->assertSession('The product has been saved.', 'Flash.flash.0.message');
-        $this->assertResponseOk();
-        //$this->assertResponseContains('The product has been saved.');
+        $this->assertSession('The product has been saved.', 'Flash.flash.0.message');
     }
 
     /**
@@ -97,6 +96,7 @@ class ProductsControllerTest extends TestCase
      */
     public function testEdit(): void
     {
+        $this->enableCsrfToken();
         $data = [
             'name' => 'Updated product name',
             'price' => '2.99',
@@ -121,6 +121,7 @@ class ProductsControllerTest extends TestCase
      */
     public function testDelete(): void
     {
+        $this->enableCsrfToken();
         $this->delete('/products/delete/1');
 
         //assert the record was marked as deleted

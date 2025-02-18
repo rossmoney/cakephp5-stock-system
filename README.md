@@ -44,3 +44,6 @@ bin/cake migrations migrate
 
 ## Seed the database
 bin/cake migrations seed Products
+
+## Run tests
+./vendor/bin/phpunit

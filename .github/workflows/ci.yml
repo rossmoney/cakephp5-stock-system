@@ -16,62 +16,67 @@ permissions:
 
 jobs:
   testsuite:
+    name: PHPUnit
     runs-on: ubuntu-22.04
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: ['8.1', '8.2']
-        dependencies: ['highest']
-        include:
-          - php-version: '8.1'
-            dependencies: 'lowest'
-
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          # The MySQL docker container requires these environment variables to be set
+          # so we can create and migrate the test database.
+          # See: https://hub.docker.com/_/mysql
+          MYSQL_DATABASE: testdb
+          MYSQL_ROOT_PASSWORD: testrootpass
+        ports:
+          # Opens port 3306 on service container and host
+          # https://docs.github.com/en/actions/using-containerized-services/about-service-containers
+          - 3306:3306
+          # Before continuing, verify the mysql container is reachable from the ubuntu host
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: ${{ matrix.php-version }}
+        php-version: '8.4.1'
         extensions: mbstring, intl, pdo_sqlite
         ini-values: zend.assertions=1
         coverage: none
+        tools: phpunit:10.5.45
 
     - name: Composer install
-      uses: ramsey/composer-install@v2
-      with:
-        dependency-versions: ${{ matrix.dependencies }}
-        composer-options: ${{ matrix.composer-options }}
+      uses: ramsey/composer-install@v3
 
     - name: Composer post install
       run: composer run-script post-install-cmd --no-interaction
 
     - name: Run PHPUnit
-      run: vendor/bin/phpunit
+      run: vendor/bin/phpunit --configuration phpunit.xml.dist
       env:
-        DATABASE_TEST_URL: sqlite://./testdb.sqlite
+        DATABASE_TEST_URL: mysql://root:testrootpass@127.0.0.1/testdb
 
   coding-standard:
     name: Coding Standard & Static Analysis
     runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1'
+        php-version: '8.4.1'
         extensions: mbstring, intl
         coverage: none
-        tools: cs2pr, phpstan:1.10
+        tools: cs2pr, phpstan:2.0.4
 
     - name: Composer install
-      uses: ramsey/composer-install@v2
+      uses: ramsey/composer-install@v3
 
     - name: Run PHP CodeSniffer
       run: vendor/bin/phpcs --report=checkstyle | cs2pr
 
     - name: Run phpstan
       if: always()
-      run: phpstan
+      run: phpstan analyse --level 8 --configuration phpstan.neon src/ tests/

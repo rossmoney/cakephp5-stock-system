@@ -1,6 +1,8 @@
+includes:
+	- phpstan-baseline.neon
+
 parameters:
     level: 8
     treatPhpDocTypesAsCertain: false
-    checkGenericClassInNonGenericObjectType: false
     paths:
         - src/

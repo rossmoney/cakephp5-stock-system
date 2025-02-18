@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property int $quantity
  * @property float $price
  * @property string $status
+ * @property bool $deleted
  */
 class Product extends Entity
 {
@@ -31,6 +32,7 @@ class Product extends Entity
         'price' => true,
         'status' => true,
         'created' => true,
-        'modified' => true,
+        'last_updated' => true,
+        'deleted' => true,
     ];
 }

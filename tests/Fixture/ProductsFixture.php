@@ -20,7 +20,7 @@ class ProductsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'name' => 'Best product!',
+                'name' => 'A product',
                 'quantity' => 1,
                 'price' => 3,
                 'status' => 'low stock',
